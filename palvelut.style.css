@@ -1,0 +1,339 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("fontit/PressStart2P-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("fontit/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  min-height: 100%;
+  width: 100%;
+}
+
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: clamp(150px, 25vw, 285px);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  filter: blur(4px);
+  background: url("kuvat/palvelut1.jpg") center/cover no-repeat;
+}
+
+header h1 {
+  margin-left: 5%;
+  font-family: "Press Start 2P";
+  font-size: clamp(3em, 6vw, 8em);
+  text-shadow: -3px 3px white, -4px 4px 5px rgb(59, 55, 55);
+}
+
+h1 span {
+  display: block;
+}
+
+nav {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border: 0.15rem solid whitesmoke;
+  border-radius: 5px;
+  
+  height: clamp(80px, 12vh, 150px);
+  background-color: black;
+}
+
+nav:has(#menu:checked) {
+  border-bottom-right-radius: 0;
+}
+
+.etusivu {
+  text-align: center;
+  writing-mode: vertical-lr;
+  padding: 1px 3px 1px 0;
+  border-radius: 2px 0 0 2px;
+  font-size: 0.6em;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: whitesmoke;
+}
+
+nav img {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  translate: -50% -50%;
+  max-height: 70%;
+}
+
+.aika {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  text-decoration: none;
+  text-wrap: nowrap;
+  font-size: clamp(1.3em, 3vh, 2em);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: clamp(10px, 2vh, 30px) clamp(15px, 3vw, 45px);
+  border-radius: 10px;
+  color: whitesmoke;
+  background-color: rgb(211, 27, 27);
+}
+
+.burger {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 1.5rem;
+  top: 50%;
+  z-index: 1000;
+  transform: translateY(-50%);
+}
+
+.burger span {
+  display: block;
+  width: 2.5rem; 
+  height: 0.25rem; 
+  background: white;
+  margin: 5px 0;  
+  transition: all 0.3s ease;
+  border-radius: 5px;  
+}
+
+.burger .handleylempi, .handlealempi {
+  position: absolute;
+  right: -0.9rem;
+  transform: translateY(-50%);
+  width: 1.5rem; 
+  height: 1rem; 
+  background-color: white; 
+  border-radius: 50%; 
+}
+
+.burger .handleylempi {
+  top: -5%;
+  transform: rotate(-45deg);
+}
+
+.burger .handlealempi {
+  top: 65%;
+  transform: rotate(45deg);
+}
+
+.burger .reikäylempi, .reikäalempi {
+  position: absolute;
+  width: 0.75rem;
+  height: 0.5rem;
+  background-color: black;
+  border-radius: 50%; 
+  left: 25%;
+  top: 25%;
+}
+
+.burger .handleylempi,
+.burger .handlealempi,
+.burger .reikäylempi,
+.burger .reikäalempi {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#menu:checked + .burger .handleylempi,
+#menu:checked + .burger .handlealempi,
+#menu:checked + .burger .reikäylempi,
+#menu:checked + .burger .reikäalempi {
+  opacity: 1;
+}
+
+.burger .handleylempi,
+.burger .handlealempi,
+.burger .reikäylempi,
+.burger .reikäalempi {
+  transition: opacity 0.3s ease;
+}
+
+#menu {
+  display: none;
+}
+
+.menu {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  height: clamp(14rem, 45vh, 20em); 
+  gap: 3vh;
+  top: 100%; 
+  right: -0.14rem;
+  border: 0.15rem solid whitesmoke;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  background-color: black;
+}
+
+#menu:checked + .burger + .menu {
+  display: flex;          
+}
+
+.menu a {
+  text-decoration: none;
+  padding: 0.5vh;
+  border-bottom: 1px solid white;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+#menu:checked + .burger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg); 
+  border-radius: 5px 0px 0 0;  
+}
+
+#menu:checked + .burger span:nth-child(2) {
+  opacity: 0;  
+}
+
+#menu:checked + .burger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);  
+  border-radius: 0 0 0px 5px;  
+}
+
+.some a {
+  padding-top: 2vh;      
+  padding: 0 1em 0;   
+  border: none;
+}
+
+.some a i {
+  color: white;
+  font-size: 2rem;
+}
+
+hr.barber {
+    margin: 0 0 10vh;
+    border: none;
+    height: 20px;
+    width: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        red 0px,
+        red 20px,
+        white 20px,
+        white 40px,
+        blue 40px,
+        blue 60px
+    );
+    animation: spin 120s linear infinite;
+
+     box-shadow:
+        inset 0 2px 4px rgba(255,255,255,0.6),  
+        inset 0 -3px 6px rgba(0,0,0,0.6),       
+        0 6px 12px rgba(0,0,0,0.7);             
+}
+
+@keyframes spin {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 2500px 0;
+  }
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;        
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+main > div { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 200px;                 
+  max-width: 450px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  aspect-ratio: 3 / 4;            
+  background: black;
+  color: whitesmoke;
+  border: 2px solid whitesmoke;
+  border-radius: 20px; 
+  white-space: normal;
+}
+
+ul {
+  width: 95%;
+}
+
+main h2 {
+  margin-bottom: 20px;
+  width: 101%;
+  text-align: center;
+  border-radius: 17.5px 17.5px 0 0;
+  background-color: whitesmoke;
+  color: black;
+}
+
+main li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+  padding-bottom: 5vh;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+li::before {
+  content: "•";
+  margin-right: 3px;
+  flex-shrink: 0;
+}
+
+.viivat {
+  flex: 1;                 
+  border-bottom: 2px dotted white;
+  min-width: 15px;
+}
+
+footer {
+  height: 100px;
+  text-align: center;
+  background-color: black;
+}
+
+footer::selection {
+  background: white;
+  color: yellow;
+}
+
+footer::-moz-selection {
+  background: white;
+  color: yellow;
+}
